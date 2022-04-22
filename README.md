@@ -2,7 +2,7 @@
 
 #### By Zachary Green
 
-#### _{This application lets a user create and view kegs of beer from their inventory and then sell a keg.}_
+#### _{This application lets a user create, view and delete beer from an inventory. Beers have information like name, brand, price and alcohol content. The user can buy a beer and have pints subtracted from a total amount of pints the keg contains.}_
 
 ## Technologies Used
 * HTML
@@ -12,11 +12,11 @@
 * Webpack
 * Babel
 * React
-* Figma
+* https://www.draw.io for creating the Diagram
 
 ## Description
 
-_{This program uses React with props and both functional components and class components.}_
+_{This program uses the NPX React-Create-App terminal command to create a start up template. A Components folder was later added with several components for the project. React works by using the same HTML document and creating a virtual version of that document where changes can be made based on user inputs. State is held in a parent component and this state is based as props to children components where a virtual version of the original state is managed. Requests to make changes can be posed by children components to the parent via functions and then handled via a setState. State can never be modified directly.}_
 
 ## Diagram
 
@@ -24,19 +24,16 @@ _{This program uses React with props and both functional components and class co
 
 ## Setup/Installation Requirements
 
-* Visit https://Ultra-Zactimus.github.com/
-* Clone this repository to your desktop.
-* Navigate to the top level of the directory.
-* Open the index.html file in your browser.
-
+* Visit https://github.com/Ultra-Zactimus/keg-counter-code-review
 * Clone this repository to your desktop.
 * Navigate to the top level of the directory in your terminal.
-* Run "$ npm install"
-* Run "$ npm run build" to build the project.
-* Run "$ npm run start" to open the dev server. Or you can open a VS Code live server on the "index.html" file in the "dist" folder.
-* Run "$ npm test" to run Jest tests.
+* Run "$ `npm install`"
+* Run "$ `npm run build`" to build the project.
+* Run "$ `npm start run`" to open a liveserver in the browser.
 
-_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this application depends on? We recommend deleting the project from your desktop, re-cloning the project from GitHub, and writing down all the steps necessary to get the project working again.}_
+* Please refer to the `Available Scripts` section of this README for more information.
+
+_{You do not need to add the `$` to the terminal commands. GitBash comes with that as a prefix on command line.}_
 
 ## Known Bugs
 
