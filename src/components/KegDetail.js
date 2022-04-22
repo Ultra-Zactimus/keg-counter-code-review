@@ -2,15 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function KegDetail(props) {
-  const { keg, onClickingDelete } = props;
+  const { keg, onClickingDecrement } = props;
   return (
     <React.Fragment>
       <h1>Keg Details</h1>
-      <h3>{keg.name}</h3>
-      <h3>{keg.brand}</h3>
-      <h3>{keg.price}</h3>
-      <h3>{keg.alcoholContent}</h3>
-      <button onClick={() => onClickingDelete(keg.id)}>Delete Keg</button>
+      <h4><strong>Name:</strong> <em>{keg.name}</em></h4>
+      <h4><strong>Brand:</strong> <em>{keg.brand}</em></h4>
+      <h4><strong>Price:</strong> <em>{keg.price}</em></h4>
+      <h4><strong>Alcohol Content:</strong> <em>{keg.alcoholContent}</em></h4>
+      <h4><strong>Pints Left:</strong> <em>{keg.pints}</em></h4>
+      <button onClick={() => onClickingDecrement(keg.id)}>Buy a Pint</button>
       <hr />
     </React.Fragment>
   );

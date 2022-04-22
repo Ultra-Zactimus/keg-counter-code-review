@@ -3,6 +3,15 @@ body {
   background-color: bisque;
 }
 
+h3 {
+  cursor: pointer;
+  color:darkblue;
+}
+
+h3:hover {
+  color:cornflowerblue;
+}
+
 header
 {
   background-color: rgb(103, 170, 164);
