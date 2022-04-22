@@ -6,7 +6,6 @@ function Header() {
     <React.Fragment>
       <header>
         <h1>McDonnel's Family Brewery</h1>
-        <hr />
       </header>
     </React.Fragment>
   );
