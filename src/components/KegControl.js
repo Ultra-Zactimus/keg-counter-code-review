@@ -1,41 +1,42 @@
 import React, { Component } from "react";
 
 class KegControl extends Component {
-  state = [
-    {
-      name: "Raven's Eye", 
-      brand: "IPA", 
-      price: 7.00,
-      alcoholContent: 0.08
-    },
-    {
-      name: "Sol",
-      brand: "Light Beer",
-      price: 5.00,
-      alcoholContent: 0.05
-    },
-    {
-      name: "Autumn Mist",
-      brand: "Add Stuff",
-      price: 5.00,
-      alcoholContent: 0.06
-    },
-    {
-      name: "Dragon Flame",
-      brand: "IPA",
-      price: 8.00,
-      alcoholContent: 0.09
+  constructor(props) {
+    super(props);
+    this.state = {
+      formVisibleOnPage: false,
+      mainKegList: [],
+      selectedKeg: null
+  };
+}
+
+  handleClick = () => {
+    if (this.state.selectedKeg != null) {
+      this.setState({
+        formVisibleOnPage: false,
+        selectedKeg: null
+      });
+    } else {
+      this.setState(prevState => ({
+        formVisibleOnPage: !prevState.formVisibleOnPage
+      }));
     }
-  ]
+  }
+
+  handleAddingNewKegToList = (newKeg) => {
+    const newKegList = this.state.beers.concat(newKeg);
+    this.setState({beers: newKegList, formVisibleOnPage: false})
+  }
+
+  handleUpdatingSelectedKeg = (id) => {
+    const selectedKeg = this.state.mainKegList.filter(keg => keg.id === id)[0];
+    this.setState({selectedKeg: selectedKeg})
+  }
 
   render() {
     return (
       <React.Fragment>
-        {this.state.map((beers =>
-          <ul>
-            <li>{beers.name}</li>
-          </ul>
-          ))}
+        
       </React.Fragment>
     );
   }
