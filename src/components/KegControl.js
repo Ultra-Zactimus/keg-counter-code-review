@@ -24,37 +24,52 @@ class KegControl extends Component {
   }
 
   handleAddingNewKegToList = (newKeg) => {
-    const newKegList = this.state.beers.concat(newKeg);
-    this.setState({beers: newKegList, formVisibleOnPage: false})
+    const newMainKegList = this.state.mainKegList.concat(newKeg);
+    this.setState(
+      {
+        beers: newKegList, 
+        formVisibleOnPage: false
+      }
+      )
   }
 
   handleUpdatingSelectedKeg = (id) => {
     const selectedKeg = this.state.mainKegList.filter(keg => keg.id === id)[0];
-    this.setState({selectedKeg: selectedKeg})
+    this.setState({ selectedKeg: selectedKeg })
+  }
+
+  handleRemovingKeg = (id) => {
+    const newMainKegList = this.state.mainKegList.filter(keg => keg.id !== id);
+    this.setState(
+      {
+      mainKegList: newMainKegList,
+      selectedKeg: null
+      }
+    );
   }
 
   render() {
     let currentlyVisableState = null;
     let buttonText = null;
     if (this.state.selectedKeg != null) {
-      currentlyVisableState = <KegDetils 
-      keg = {this.state.selectedKeg} 
+      currentlyVisableState = <KegDetail 
+      keg = { this.state.selectedKeg } onClickingRemove = { this.handleRemovingKeg } 
       />
       buttonText = "Return to the list of Kegs"
     } else if (this.state.formVisibleOnPage) {
-      currentlyVisableState = <NewKeg 
-      onNewKegCreation = {this.handleAddingNewKegToList}
+      currentlyVisableState = <NewKegForm 
+      onNewKegCreation = { this.handleAddingNewKegToList }
       />
       buttonText = "Return to the list of Kegs"
     } else {
       currentlyVisableState = <KegList
-      kegList = {this.state.mainKegList} onKegSelection = {this.handleUpdatingSelectedKeg}
+      kegList = { this.state.mainKegList } onKegSelection = { this.handleUpdatingSelectedKeg }
       />
     }
     return (
       <React.Fragment>
         {currentlyVisableState}
-        <button onClick={this.handleClick}>{buttonText}</button>
+        <button onClick = { this.handleClick }>{ buttonText }</button>
       </React.Fragment>
     );
   }
