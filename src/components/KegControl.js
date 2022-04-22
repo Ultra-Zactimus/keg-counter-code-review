@@ -34,10 +34,30 @@ class KegControl extends Component {
   }
 
   render() {
+    let currentlyVisableState = null;
+    let buttonText = null;
+    if (this.state.selectedKeg != null) {
+      currentlyVisableState = <KegDetils 
+      keg = {this.state.selectedKeg} 
+      />
+      buttonText = "Return to the list of Kegs"
+    } else if (this.state.formVisibleOnPage) {
+      currentlyVisableState = <NewKeg 
+      onNewKegCreation = {this.handleAddingNewKegToList}
+      />
+      buttonText = "Return to the list of Kegs"
+    } else {
+      currentlyVisableState = <KegList
+      kegList = {this.state.mainKegList} onKegSelection = {this.handleUpdatingSelectedKeg}
+      />
+    }
     return (
       <React.Fragment>
-        
+        {currentlyVisableState}
+        <button onClick={this.handleClick}>{buttonText}</button>
       </React.Fragment>
     );
   }
 }
+
+export default KegControl;
