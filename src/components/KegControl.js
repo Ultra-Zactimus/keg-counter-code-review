@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import NewKegForm from "./NewKegForm";
+import KegList from "./KegList";
+import KegDetail from "./KegDetail";
 
 class KegControl extends Component {
   constructor(props) {
@@ -27,7 +30,7 @@ class KegControl extends Component {
     const newMainKegList = this.state.mainKegList.concat(newKeg);
     this.setState(
       {
-        beers: newKegList, 
+        beers: newMainKegList, 
         formVisibleOnPage: false
       }
       )

@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from './components/Header';
-import KegControl from './components/KegControl';
+import Header from './Header';
+import KegControl from './KegControl';
 
 function App() {
   return (
