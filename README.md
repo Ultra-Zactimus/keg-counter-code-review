@@ -37,7 +37,7 @@ _{You do not need to add the `$` to the terminal commands. GitBash comes with th
 
 ## Known Bugs
 
-* No known bugs at this time.
+* The buy a Pint feature does not work. I was unable to figure out how to change the delete function into a function for decrementing the number. Probably gonna have this sussed by Monday.
 
 ## License
 
