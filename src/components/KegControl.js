@@ -10,7 +10,8 @@ class KegControl extends React.Component {
     this.state = {
       formVisibleOnPage: false,
       mainKegList: [],
-      selectedKeg: null
+      selectedKeg: null,
+      soldPints: false
     };
   }
 
@@ -27,6 +28,8 @@ class KegControl extends React.Component {
     }
   }
 
+
+
   handleAddingNewKegToList = (newKeg) => {
     const newMainKegList = this.state.mainKegList.concat(newKeg);
     this.setState({ mainKegList: newMainKegList, formVisibleOnPage: false });
@@ -35,26 +38,49 @@ class KegControl extends React.Component {
     const selectedKeg = this.state.mainKegList.filter(keg => keg.id === id)[0];
     this.setState({ selectedKeg: selectedKeg });
   }
-  handleDecrementingKeg = (id) => {
+  handleDeletingKeg = (id) => {
     const newMainKegList = this.state.mainKegList.filter(keg => keg.id !== id);
     this.setState({
       mainKegList: newMainKegList,
       selectedKeg: null
     });
   }
+  handleSoldPints = () => {
+    this.setState({pintsSold: true})
+  }
+  handleDecrementingPints = (id) => {
+    const addedKeg = this.state.mainKegList.filter(keg => keg.id === id)[0];
+    if(addedKeg.pints - 1 < 0) {
+      addedKeg.pints = 0;
+    } else {
+      addedKeg.pints -= 1;
+    }
+
+    const newMainKegList = this.state.mainKegList
+    .filter(keg => keg.id !== id)
+    .concat(addedKeg);
+
+    this.setState(
+      {
+        mainKegList: newMainKegList, 
+        selectedKeg: null, 
+        soldPints: false
+      }
+    );
+  }
 
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
     if (this.state.selectedKeg != null) {
-      currentlyVisibleState = <KegDetail keg={this.state.selectedKeg} onClickingDecrement={this.handleDecrementingKeg} />
+      currentlyVisibleState = <KegDetail keg={this.state.selectedKeg} onClickingDelete={this.handleDeletingKeg} />
       buttonText = "Return to the list of Kegs";
     }
     else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <NewKegForm onNewKegCreation={this.handleAddingNewKegToList} />
       buttonText = "Return to the list of Kegs";
     } else {
-      currentlyVisibleState = <KegList kegList={this.state.mainKegList} onKegSelection={this.handleChangingSelectedKeg} />
+      currentlyVisibleState = <KegList kegList={this.state.mainKegList} onKegSelection={this.handleChangingSelectedKeg} onSoldPints={this.handleDecrementingPints}/>
       buttonText = "Add Keg";
     }
     return (
